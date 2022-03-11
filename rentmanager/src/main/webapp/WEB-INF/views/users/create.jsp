@@ -23,15 +23,15 @@
 						<!-- Horizontal Form -->
 						<div class="box">
 							<!-- form start -->
-							<form class="form-horizontal" method="post"
-								action="/rentmanager/users/create">
+							<form class="form-horizontal" method="post">
 								<div class="box-body">
 									<div class="form-group">
 										<label for="last_name" class="col-sm-2 control-label">Nom</label>
 
 										<div class="col-sm-10">
 											<input type="text" class="form-control" id="last_name"
-												name="last_name" placeholder="Nom">
+												name="last_name" placeholder="Nom" required pattern=".{3,}"
+												required title="Il faut 3 caractères miniumum">
 										</div>
 									</div>
 									<div class="form-group">
@@ -39,7 +39,9 @@
 
 										<div class="col-sm-10">
 											<input type="text" class="form-control" id="first_name"
-												name="first_name" placeholder="Prenom">
+												name="first_name" placeholder="Prenom" required required
+												pattern=".{3,}" required
+												title="Il faut 3 caractères miniumum">
 										</div>
 									</div>
 									<div class="form-group">
@@ -47,23 +49,27 @@
 
 										<div class="col-sm-10">
 											<input type="email" class="form-control" id="email"
-												name="email" placeholder="Email">
+												name="email" placeholder="Email" required>
 										</div>
 									</div>
 									<div class="form-group">
-										<label for="naissance" class="col-sm-2 control-label">Date de naissance</label>
+										<label for="naissance" class="col-sm-2 control-label">Date
+											de naissance</label>
 
 										<div class="col-sm-10">
 											<input type="date" class="form-control" id="naissance"
-												name="naissance" >
+												name="naissance" required>
 										</div>
 									</div>
 								</div>
 								<!-- /.box-body -->
 								<div class="box-footer">
-								
-								
-								<button type="submit" class="btn btn-info pull-right">Ajouter</button>
+
+
+
+
+									<button type="submit" class="btn btn-info pull-right">Ajouter</button>
+
 								</div>
 								<!-- /.box-footer -->
 							</form>
@@ -81,5 +87,11 @@
 	<!-- ./wrapper -->
 
 	<%@ include file="/WEB-INF/views/common/js_imports.jsp"%>
+
+
+
+
+
+
 </body>
 </html>

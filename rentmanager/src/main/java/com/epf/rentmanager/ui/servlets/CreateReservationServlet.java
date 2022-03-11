@@ -59,20 +59,19 @@ public class CreateReservationServlet extends HttpServlet {
 		int id = 0;
 		String nomCar = request.getParameter("car");
 		String nomClient = request.getParameter("client");
-		
-		String splitNomCar = nomCar.replaceAll("[^\\d]", " ").replaceAll(" +", " ").replaceFirst(".$",""); 
-		String splitNomClient = nomClient.replaceAll("[^\\d]", " ").replaceAll(" +", " ").replaceFirst(".$",""); 
-		
+
+		String splitNomCar = nomCar.replaceAll("[^\\d]", " ").replaceAll(" +", " ").replaceFirst(".$", "");
+		String splitNomClient = nomClient.replaceAll("[^\\d]", " ").replaceAll(" +", " ").replaceFirst(".$", "");
+
 		int addIdCar = Integer.parseInt(splitNomCar);
 		int addIdClient = Integer.parseInt(splitNomClient);
-		
-		
+
 		String dateDebut = request.getParameter("begin");
 		String dateFin = request.getParameter("end");
 		LocalDate adddateDebut = LocalDate.parse(dateDebut);
 		LocalDate adddateFin = LocalDate.parse(dateFin);
 
-		Reservation addReservation = new Reservation(id,addIdClient,addIdCar,adddateDebut,adddateFin);
+		Reservation addReservation = new Reservation(id, addIdClient, addIdCar, adddateDebut, adddateFin);
 
 		try {
 			request.setAttribute("addResas", this.reservationservice.create(addReservation));

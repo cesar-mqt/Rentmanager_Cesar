@@ -48,10 +48,10 @@ public class DetailsVehicleServlet extends HttpServlet {
 			request.setAttribute("compteClients", this.clientservice.countById(id));
 			request.setAttribute("compteReservations", this.reservationservice.countByVehicleId(id));
 
-			//request.setAttribute("Reservations", this.reservationservice.findResaByVehicleId(id));
+			// request.setAttribute("Reservations",
+			// this.reservationservice.findResaByVehicleId(id));
 			request.setAttribute("Reservations", this.reservationservice.findResaByVehicleIdWeb(id));
 
-			
 		} catch (ServiceException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -62,4 +62,3 @@ public class DetailsVehicleServlet extends HttpServlet {
 	}
 
 }
-

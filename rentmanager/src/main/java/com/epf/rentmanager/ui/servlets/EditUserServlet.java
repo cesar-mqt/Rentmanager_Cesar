@@ -32,6 +32,17 @@ public class EditUserServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
+		String var_id = request.getQueryString();
+		String idOk = var_id.substring(3);
+		int id = Integer.parseInt(idOk);
+
+		try {
+			request.setAttribute("dataClient", this.clientservice.findById(id));
+		} catch (ServiceException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
 		getServletContext().getRequestDispatcher("/WEB-INF/views/users/edit.jsp").forward(request, response);
 
 	}

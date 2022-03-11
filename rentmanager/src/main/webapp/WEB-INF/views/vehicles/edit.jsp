@@ -30,7 +30,7 @@
 							<form class="form-horizontal" method="post">
 								<div class="box-body">
 
-									
+
 
 									<div class="form-group">
 										<label for="manufacturer" class="col-sm-2 control-label">Marque</label>
@@ -40,7 +40,8 @@
 										<!-- de l'attribut "name" de l'input -->
 										<div class="col-sm-10">
 											<input type="text" class="form-control" id="manufacturer"
-												name="manufacturer" placeholder="Marque" required>
+												name="manufacturer"
+												placeholder="${dataVehicle.constructeur}" required>
 										</div>
 									</div>
 									<!--                                 <div class="form-group">
@@ -55,8 +56,9 @@
 											de places</label>
 
 										<div class="col-sm-10">
-											<input type="text" class="form-control" id="seats"
-												name="seats" placeholder="Nombre de places" required>
+											<input type="number" class="form-control" id="seats"
+												name="seats" placeholder="${dataVehicle.nbPlace}" required
+												min="2" max="9">
 										</div>
 									</div>
 
@@ -76,7 +78,7 @@
 								</div>
 								<!-- /.box-body -->
 								<div class="box-footer">
-									<button type="submit" class="btn btn-info pull-right" >Editer</button>
+									<button type="submit" class="btn btn-info pull-right">Editer</button>
 								</div>
 								<!-- /.box-footer -->
 							</form>

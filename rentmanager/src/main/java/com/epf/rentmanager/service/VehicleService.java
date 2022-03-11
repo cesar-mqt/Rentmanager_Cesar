@@ -18,11 +18,11 @@ public class VehicleService {
 
 	private VehicleDao vehicleDao;
 	public static VehicleService instance;
-	
-	private VehicleService(VehicleDao vehicleDao){
+
+	private VehicleService(VehicleDao vehicleDao) {
 		this.vehicleDao = vehicleDao;
-		}
-	
+	}
+
 //	public static VehicleService getInstance() {
 //		if (instance == null) {
 //			instance = new VehicleService();
@@ -30,43 +30,36 @@ public class VehicleService {
 //		
 //		return instance;
 //	}
-	
-	
+
 	public long create(Vehicle vehicle) throws ServiceException {
 
 		try {
-		return this.vehicleDao.create(vehicle);
+			return this.vehicleDao.create(vehicle);
 		} catch (DaoException e) {
-		e.printStackTrace();
+			e.printStackTrace();
 		}
-		return 0;		
+		return 0;
 	}
-	
-	
+
 	public long edit(Vehicle vehicle) throws ServiceException {
 
 		try {
-		return this.vehicleDao.edit(vehicle);
+			return this.vehicleDao.edit(vehicle);
 		} catch (DaoException e) {
-		e.printStackTrace();
+			e.printStackTrace();
 		}
-		return 0;		
+		return 0;
 	}
-	
+
 	public long delete(int id) throws ServiceException {
 
 		try {
-		return this.vehicleDao.delete(id);
+			return this.vehicleDao.delete(id);
 		} catch (DaoException e) {
-		e.printStackTrace();
+			e.printStackTrace();
 		}
-		return 0;		
+		return 0;
 	}
-	
-	
-	
-	
-	
 
 	public Vehicle findById(int id) throws ServiceException {
 
@@ -76,34 +69,34 @@ public class VehicleService {
 			e.printStackTrace();
 		}
 		return null;
-		
+
 	}
 
 	public List<Vehicle> findAll() throws ServiceException {
 		try {
-		return this.vehicleDao.findAll();
+			return this.vehicleDao.findAll();
 		} catch (DaoException e) {
-		e.printStackTrace();
+			e.printStackTrace();
 		}
 		return null;
 	}
-	
+
 	public long count() {
 		try {
-		return this.vehicleDao.count();
+			return this.vehicleDao.count();
 		} catch (DaoException e) {
-		e.printStackTrace();
+			e.printStackTrace();
 		}
 		return 0;
 	}
-	
+
 	public long countById(int idCount) {
 		try {
-		return this.vehicleDao.countById(idCount);
+			return this.vehicleDao.countById(idCount);
 		} catch (DaoException e) {
-		e.printStackTrace();
+			e.printStackTrace();
 		}
 		return 0;
 	}
-	
+
 }

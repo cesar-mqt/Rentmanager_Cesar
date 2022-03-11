@@ -18,43 +18,37 @@ import com.epf.rentmanager.service.ClientService;
 
 @WebServlet("/users")
 
+public class UserServlet extends HttpServlet {
 
-public class UserServlet extends HttpServlet{
-	
-	 @Autowired
-	 ClientService clientservice;
-	 
-	 @Override
-	 public void init() throws ServletException {
-	 super.init();
-	 SpringBeanAutowiringSupport.processInjectionBasedOnCurrentContext(this);
-	 }
-	 
-	
-	protected void doGet(HttpServletRequest request, HttpServletResponse
-			response) throws ServletException, IOException {
+	@Autowired
+	ClientService clientservice;
 
-		
-		
+	@Override
+	public void init() throws ServletException {
+		super.init();
+		SpringBeanAutowiringSupport.processInjectionBasedOnCurrentContext(this);
+	}
+
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+
 		try {
 			request.setAttribute("clients", this.clientservice.findAll());
 		} catch (ServiceException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
 
 		getServletContext().getRequestDispatcher("/WEB-INF/views/users/list.jsp").forward(request, response);
 
-			}
-	
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException  {
-		
+	}
 
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 
-		String id = request.getParameter("id");		
+		String id = request.getParameter("id");
 		int idDel = Integer.valueOf(id);
-	
+
 		try {
 			this.clientservice.delete(idDel);
 		} catch (ServiceException e) {
@@ -64,8 +58,7 @@ public class UserServlet extends HttpServlet{
 
 		this.doGet(request, response);
 	}
-	
-	
+
 //	public void Edit(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException  {
 //		
 //		this.doPost(request, response);
@@ -73,6 +66,5 @@ public class UserServlet extends HttpServlet{
 //		getServletContext().getRequestDispatcher("/WEB-INF/views/users/create.jsp").forward(request, response);
 //		
 //	}
-	
 
 }

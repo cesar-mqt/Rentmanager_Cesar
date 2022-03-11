@@ -31,68 +31,49 @@ public class CreateUserServlet extends HttpServlet {
 		super.init();
 		SpringBeanAutowiringSupport.processInjectionBasedOnCurrentContext(this);
 	}
-	
-	
-	
+
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
-		
-
-
-		
 		getServletContext().getRequestDispatcher("/WEB-INF/views/users/create.jsp").forward(request, response);
 
-		
-		
 	}
-	
-	
-	
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) 
-							throws ServletException, IOException {
-		
+
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+
 		int id = 0;
 		String nom = request.getParameter("last_name");
 		String prenom = request.getParameter("first_name");
 		String email = request.getParameter("email");
 		String birthDate = request.getParameter("naissance");
 		LocalDate addbirthDate = LocalDate.parse(birthDate);
-		
 
-//		String dateComparaison = birthDate.replace("-", "");
-//		int dateNumNaissance = Integer.parseInt(dateComparaison);
-//		
-//		String dateDuJour = LocalDate.now().toString();	
-//		String dateAjd = dateDuJour.replace("-", "");
-//		int dateNumAjd = Integer.parseInt(dateAjd); 
-//
-//
-//		
-//		if (dateNumAjd-dateNumNaissance > 180000) {
-			
-			
-		Client addClient = new Client(id,nom,prenom,email,addbirthDate);
-		
-		try {
-			request.setAttribute("addClients", this.clientservice.create(addClient));
-		} catch (ServiceException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+		String dateComparaison = birthDate.replace("-", "");
+		int dateNumNaissance = Integer.parseInt(dateComparaison);
+
+		String dateDuJour = LocalDate.now().toString();
+		String dateAjd = dateDuJour.replace("-", "");
+		int dateNumAjd = Integer.parseInt(dateAjd);
+
+		if (dateNumAjd - dateNumNaissance >= 180000) {
+
+			Client addClient = new Client(id, nom, prenom, email, addbirthDate);
+
+			try {
+				request.setAttribute("addClients", this.clientservice.create(addClient));
+			} catch (ServiceException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+
+				this.doGet(request, response);
+
+			}
+
 		}
 
-		this.doGet(request,response);
-		}
-		
-//		else {
-//			
-//		
-//
-//			
-//		}
-	//}		
-		
-		
+		this.doGet(request, response);
 
+	}
 
 }

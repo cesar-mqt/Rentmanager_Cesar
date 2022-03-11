@@ -47,10 +47,10 @@ public class DetailsUserServlet extends HttpServlet {
 
 			request.setAttribute("compteVoitures", this.vehicleservice.countById(id));
 			request.setAttribute("compteReservations", this.reservationservice.countByClientId(id));
-			//request.setAttribute("Reservations", this.reservationservice.findResaByClientId(id));
+			// request.setAttribute("Reservations",
+			// this.reservationservice.findResaByClientId(id));
 			request.setAttribute("Reservations", this.reservationservice.findResaByClientIdWeb(id));
-			
-			
+
 		} catch (ServiceException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

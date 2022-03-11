@@ -17,22 +17,20 @@ import com.epf.rentmanager.service.ReservationService;
 
 @WebServlet("/rents")
 
-public class ReservationServlet extends HttpServlet{
-	
-	
-	 @Autowired
-	 ReservationService reservationService;
-	 
-	 @Override
-	 public void init() throws ServletException {
-	 super.init();
-	 SpringBeanAutowiringSupport.processInjectionBasedOnCurrentContext(this);
-	 }
-	
-	protected void doGet(HttpServletRequest request, HttpServletResponse
-			response) throws ServletException, IOException {
-	
-		
+public class ReservationServlet extends HttpServlet {
+
+	@Autowired
+	ReservationService reservationService;
+
+	@Override
+	public void init() throws ServletException {
+		super.init();
+		SpringBeanAutowiringSupport.processInjectionBasedOnCurrentContext(this);
+	}
+
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+
 		try {
 			request.setAttribute("reservations", this.reservationService.affichageWeb());
 		} catch (ServiceException e) {
@@ -40,18 +38,16 @@ public class ReservationServlet extends HttpServlet{
 			e.printStackTrace();
 		}
 
+		getServletContext().getRequestDispatcher("/WEB-INF/views/rents/list.jsp").forward(request, response);
 
-	getServletContext().getRequestDispatcher("/WEB-INF/views/rents/list.jsp").forward(request, response);
+	}
 
-		}
-	
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException  {
-		
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 
-
-		String id = request.getParameter("id");		
+		String id = request.getParameter("id");
 		int idDel = Integer.valueOf(id);
-	
+
 		try {
 			this.reservationService.delete(idDel);
 		} catch (ServiceException e) {

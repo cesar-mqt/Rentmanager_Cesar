@@ -12,14 +12,11 @@ import com.epf.rentmanager.service.VehicleService;
 public class Main {
 
 	public static void main(String[] args) {
-		
-		
-		
+
 //		try {
-			//System.out.println(ClientService.getInstance().findById(1));
-			//System.out.println(VehicleService.getInstance().findById(1));
-			
-			
+		// System.out.println(ClientService.getInstance().findById(1));
+		// System.out.println(VehicleService.getInstance().findById(1));
+
 //			System.out.println("Rentrer le nom");
 //			Scanner scan = new Scanner(System.in);
 //			String addNom = scan.nextLine();
@@ -44,12 +41,10 @@ public class Main {
 //			Client addClient = new Client(addId, addNom,addPrenom, addBirthdate,addEmail);
 //			
 //			System.out.println(ClientService.getInstance().create(addClient));
-			
-			
-			
+
 //			System.out.println(ClientService.getInstance().findAll());
 //			System.out.println(VehicleService.getInstance().findAll());
-			
+
 //			System.out.println("Rentrer id a supp");
 //			Scanner scan = new Scanner(System.in);
 //			String scanRow = scan.nextLine();
@@ -58,10 +53,7 @@ public class Main {
 //			
 //			System.out.println(ClientService.getInstance().delete(delRow));
 
-			
 //			System.out.println(ClientService.getInstance().count());
-			
-			
 
 //			System.out.println("Rentrer le constructeur");
 //			Scanner scan = new Scanner(System.in);

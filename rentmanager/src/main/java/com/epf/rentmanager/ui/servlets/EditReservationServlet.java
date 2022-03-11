@@ -39,8 +39,6 @@ public class EditReservationServlet extends HttpServlet {
 		SpringBeanAutowiringSupport.processInjectionBasedOnCurrentContext(this);
 	}
 
-	
-	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		try {
@@ -78,7 +76,7 @@ public class EditReservationServlet extends HttpServlet {
 		LocalDate editDateFin = LocalDate.parse(dateFin);
 
 		Reservation editReservation = new Reservation(id, addIdClient, addIdCar, editDateDebut, editDateFin);
-		
+
 		try {
 			request.setAttribute("editRservation", this.reservationservice.edit(editReservation));
 		} catch (ServiceException e) {

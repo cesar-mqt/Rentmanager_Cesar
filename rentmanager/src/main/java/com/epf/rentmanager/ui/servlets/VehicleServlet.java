@@ -17,42 +17,38 @@ import com.epf.rentmanager.service.VehicleService;
 @WebServlet("/cars")
 
 public class VehicleServlet extends HttpServlet {
-	
-	
-	@Autowired
-	 VehicleService vehicleservice;
-	 
-	 @Override
-	 public void init() throws ServletException {
-	 super.init();
-	 SpringBeanAutowiringSupport.processInjectionBasedOnCurrentContext(this);
-	 }
-	 
-		
-	
-	protected void doGet(HttpServletRequest request, HttpServletResponse
-			response) throws ServletException, IOException {
 
-		
-		
+	@Autowired
+	VehicleService vehicleservice;
+
+	@Override
+	public void init() throws ServletException {
+		super.init();
+		SpringBeanAutowiringSupport.processInjectionBasedOnCurrentContext(this);
+	}
+
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+
 		try {
 			request.setAttribute("vehicles", this.vehicleservice.findAll());
 		} catch (ServiceException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
+
 //		RequestDispatcher requestDispatcher = request.getRequestDispatcher("home.jsp") ;
 //		requestDispatcher.forward(request, response) ;
 		getServletContext().getRequestDispatcher("/WEB-INF/views/vehicles/list.jsp").forward(request, response);
 
-			}
-	
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException  {
+	}
 
-		String id = request.getParameter("id");		
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+
+		String id = request.getParameter("id");
 		int idDel = Integer.valueOf(id);
-	
+
 		try {
 			this.vehicleservice.delete(idDel);
 		} catch (ServiceException e) {

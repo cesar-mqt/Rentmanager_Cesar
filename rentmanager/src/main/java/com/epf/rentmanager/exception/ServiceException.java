@@ -1,10 +1,10 @@
 package com.epf.rentmanager.exception;
 
 public class ServiceException extends Exception {
-	
-	public ServiceException()  {
-		
+
+	public ServiceException() {
+
 		super("Erreur dans le Service");
 	}
-	
+
 }

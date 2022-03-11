@@ -44,18 +44,21 @@
 											<td>${vehicle.nbPlace}</td>
 											<!--<td>John Doe</td>-->
 											<td><form action="/rentmanager/cars" method="post">
-											
-											<a class="btn btn-primary"
-													href="${pageContext.request.contextPath}/cars/details?id=${vehicle.id}">
-														<i class="fa fa-play"></i></a>
-												
-											</a> <a class="btn btn-success enable" href="${pageContext.request.contextPath}/cars/edit?id=${vehicle.id}"> 
-													<i class="fa fa-edit"></i>
-													
-											</a> <button type="submit" class="btn btn-danger enable"    value="${vehicle.id}"
-													id="id" name="id">
-														<i class="fa fa-trash"></i></button>
-											</a></form></td>
+
+													<a class="btn btn-primary"
+														href="${pageContext.request.contextPath}/cars/details?id=${vehicle.id}">
+														<i class="fa fa-play"></i>
+													</a> </a> <a class="btn btn-success enable"
+														href="${pageContext.request.contextPath}/cars/edit?id=${vehicle.id}">
+														<i class="fa fa-edit"></i>
+
+													</a>
+													<button type="submit" class="btn btn-danger enable"
+														value="${vehicle.id}" id="id" name="id">
+														<i class="fa fa-trash"></i>
+													</button>
+													</a>
+												</form></td>
 										</tr>
 
 									</c:forEach>

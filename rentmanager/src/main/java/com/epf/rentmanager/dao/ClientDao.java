@@ -21,15 +21,11 @@ import com.epf.rentmanager.model.Client;
 import com.epf.rentmanager.model.Vehicle;
 import com.epf.rentmanager.persistence.ConnectionManager;
 
-
 @Repository
 public class ClientDao {
 
-	
 	private static ClientDao instance = null;
 
-	
-	
 	private ClientDao() {
 	}
 
@@ -49,7 +45,6 @@ public class ClientDao {
 	private static final String COUNT_CLIENT_BY_ID_QUERY = "SELECT COUNT (*) FROM Reservation WHERE vehicle_id=?;";
 	private static final String UPDATE_CLIENT_QUERY = "UPDATE Client SET nom=?, prenom=?, email=?,naissance=? WHERE id=?;";
 
-	
 	public long count() throws DaoException {
 
 		try {
@@ -71,15 +66,15 @@ public class ClientDao {
 		return 0;
 
 	}
-	
+
 	public long countById(int idCount) throws DaoException {
 
 		try {
 			Connection conn = ConnectionManager.getConnection();
 			PreparedStatement pstmt = conn.prepareStatement(COUNT_CLIENT_BY_ID_QUERY);
-				
+
 			pstmt.setInt(1, idCount);
-			
+
 			ResultSet rs = pstmt.executeQuery();
 
 			rs.next();
@@ -95,25 +90,22 @@ public class ClientDao {
 		return 0;
 
 	}
-	
-	
+
 	public long edit(Client client) throws DaoException {
 
-
 		try {
-			
+
 			Connection conn = ConnectionManager.getConnection();
 			PreparedStatement pstmt = conn.prepareStatement(UPDATE_CLIENT_QUERY);
 
-			
 			pstmt.setString(1, client.getNom());
 			pstmt.setString(2, client.getPrenom());
 			pstmt.setString(3, client.getEmail());
-			
+
 			Date addDate = Date.valueOf(client.getBirthDate());
 			pstmt.setDate(4, addDate);
 			pstmt.setInt(5, client.getId());
-			
+
 			pstmt.executeUpdate();
 
 			return 0;
@@ -133,14 +125,12 @@ public class ClientDao {
 			Connection conn = ConnectionManager.getConnection();
 			PreparedStatement pstmt = conn.prepareStatement(CREATE_CLIENT_QUERY);
 
-		
-
 			// Client addclient = new Client(addNom, addPrenom, addEmail, straddBirthdate);
 
 			pstmt.setString(1, client.getNom());
 			pstmt.setString(2, client.getPrenom());
 			pstmt.setString(3, client.getEmail());
-			
+
 			Date addDate = Date.valueOf(client.getBirthDate());
 			pstmt.setDate(4, addDate);
 
@@ -162,16 +152,13 @@ public class ClientDao {
 		try {
 			Connection conn = ConnectionManager.getConnection();
 			PreparedStatement pstmt = conn.prepareStatement(DELETE_CLIENT_QUERY);
-			
-			
-			pstmt.setInt(1, id);
 
+			pstmt.setInt(1, id);
 
 			pstmt.executeUpdate();
 
 			System.out.println("Ligne supprimée");
 
-			
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -221,13 +208,13 @@ public class ClientDao {
 			ResultSet rs = pstmt.executeQuery();
 
 			while (rs.next()) {
-				int id = rs.getInt("id"); 
+				int id = rs.getInt("id");
 				String clientLastname = rs.getString("nom");
 				String clientFirstname = rs.getString("prenom");
 				String clientEmail = rs.getString("email");
 				LocalDate clientBirthdate = rs.getDate("naissance").toLocalDate();
 
-				Client client = new Client(id, clientLastname,clientFirstname, clientEmail, clientBirthdate);
+				Client client = new Client(id, clientLastname, clientFirstname, clientEmail, clientBirthdate);
 
 				clients.add(client);
 			}
@@ -243,6 +230,5 @@ public class ClientDao {
 
 		// return null;
 	}
-	
 
 }

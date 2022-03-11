@@ -24,15 +24,15 @@ public class HomeServlet extends HttpServlet {
 
 	@Autowired
 	VehicleService vehicleService;
-	
+
 	@Autowired
 	ReservationService reservationService;
-	
-	 @Override
-	 public void init() throws ServletException {
-	 super.init();
-	 SpringBeanAutowiringSupport.processInjectionBasedOnCurrentContext(this);
-	 }
+
+	@Override
+	public void init() throws ServletException {
+		super.init();
+		SpringBeanAutowiringSupport.processInjectionBasedOnCurrentContext(this);
+	}
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
@@ -41,15 +41,10 @@ public class HomeServlet extends HttpServlet {
 		request.setAttribute("countClients", this.clientService.count());
 		request.setAttribute("countResas", this.reservationService.count());
 
-		
-		
 //		RequestDispatcher requestDispatcher = request.getRequestDispatcher("home.jsp") ;
 //		requestDispatcher.forward(request, response) ;
 		getServletContext().getRequestDispatcher("/WEB-INF/views/home.jsp").forward(request, response);
 
-		
-		
-		
 	}
 
 }

@@ -26,38 +26,39 @@ public class EditVehicleServlet extends HttpServlet {
 		super.init();
 		SpringBeanAutowiringSupport.processInjectionBasedOnCurrentContext(this);
 	}
-	
-	
-	
+
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
-		
-
-
-		
-		getServletContext().getRequestDispatcher("/WEB-INF/views/vehicles/edit.jsp").forward(request, response);
-
-		
-		
-	}
-	
-	
-	
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) 
-							throws ServletException, IOException {
-		
 		String var_id = request.getQueryString();
 		String idOk = var_id.substring(3);
 		int id = Integer.parseInt(idOk);
-		
+
+		try {
+			request.setAttribute("dataVehicle", this.vehicleservice.findById(id));
+		} catch (ServiceException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		getServletContext().getRequestDispatcher("/WEB-INF/views/vehicles/edit.jsp").forward(request, response);
+
+	}
+
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+
+		String var_id = request.getQueryString();
+		String idOk = var_id.substring(3);
+		int id = Integer.parseInt(idOk);
+
 		String constructeur = request.getParameter("manufacturer");
-		
+
 		String nbPlace = request.getParameter("seats");
 		int addNbPlace = Integer.parseInt(nbPlace);
-		
-		Vehicle editVehicle = new Vehicle(id,constructeur,addNbPlace);
-		
+
+		Vehicle editVehicle = new Vehicle(id, constructeur, addNbPlace);
+
 		try {
 			request.setAttribute("editVehicle", this.vehicleservice.edit(editVehicle));
 		} catch (ServiceException e) {
@@ -65,10 +66,8 @@ public class EditVehicleServlet extends HttpServlet {
 			e.printStackTrace();
 		}
 
-		this.doGet(request,response);
-		
-		
-		
+		this.doGet(request, response);
+
 	}
 
 }

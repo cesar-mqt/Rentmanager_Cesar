@@ -30,9 +30,10 @@
 										<label for="car" class="col-sm-2 control-label">Client</label>
 
 										<div class="col-sm-10">
-											<select class="form-control" id="client" name="client">
+											<select class="form-control" id="client" name="client"
+												required>
 												<c:forEach items="${choixClients}" var="client">
-													<option>${client.id} ${client.nom} ${client.prenom}</option>
+													<option>${client.id}${client.nom} ${client.prenom}</option>
 
 												</c:forEach>
 											</select>
@@ -43,9 +44,9 @@
 										<label for="client" class="col-sm-2 control-label">Voiture</label>
 
 										<div class="col-sm-10">
-											<select class="form-control" id="car" name="car">
+											<select class="form-control" id="car" name="car" required>
 												<c:forEach items="${choixVehicle}" var="vehicle">
-													<option>${vehicle.id} ${vehicle.constructeur} </option>
+													<option>${vehicle.id}${vehicle.constructeur}</option>
 												</c:forEach>
 											</select>
 										</div>

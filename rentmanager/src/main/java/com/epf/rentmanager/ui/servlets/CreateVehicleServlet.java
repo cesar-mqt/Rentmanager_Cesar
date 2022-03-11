@@ -26,34 +26,24 @@ public class CreateVehicleServlet extends HttpServlet {
 		super.init();
 		SpringBeanAutowiringSupport.processInjectionBasedOnCurrentContext(this);
 	}
-	
-	
-	
+
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
-		
-
-
-		
 		getServletContext().getRequestDispatcher("/WEB-INF/views/vehicles/create.jsp").forward(request, response);
 
-		
-		
 	}
-	
-	
-	
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) 
-							throws ServletException, IOException {
-		
+
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+
 		int id = 0;
 		String constructeur = request.getParameter("manufacturer");
 		String nbPlace = request.getParameter("seats");
 		int addNbPlace = Integer.parseInt(nbPlace);
-		
-		Vehicle addVehicle = new Vehicle(id,constructeur,addNbPlace);
-		
+
+		Vehicle addVehicle = new Vehicle(id, constructeur, addNbPlace);
+
 		try {
 			request.setAttribute("addVehicle", this.vehicleservice.create(addVehicle));
 		} catch (ServiceException e) {
@@ -61,10 +51,8 @@ public class CreateVehicleServlet extends HttpServlet {
 			e.printStackTrace();
 		}
 
-		this.doGet(request,response);
-		
-		
-		
+		this.doGet(request, response);
+
 	}
 
 }

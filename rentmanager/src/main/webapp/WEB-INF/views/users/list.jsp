@@ -37,41 +37,41 @@
 										<c:forEach items="${clients}" var="client">
 
 											<tr>
-												<td>${client.id} </td>
+												<td>${client.id}</td>
 												<td>${client.nom}</td>
 												<td>${client.prenom}</td>
 												<td>${client.email}</td>
 												<td>${client.birthDate}</td>
-												
-												<td><form action="/rentmanager/users" method="post">
-												
-												
-												<a class="btn btn-primary"
-													href="${pageContext.request.contextPath}/users/details?id=${client.id}">
-														<i class="fa fa-play"></i></a>
-														
-														
-												 <a class="btn btn-success enable" 
-												href="${pageContext.request.contextPath}/users/edit?id=${client.id}" >
-														 <i class="fa fa-edit"></i></a>
-														
-														
-			
-														
-												<button type="submit" class="btn btn-danger enable"    value="${client.id}"
-													id="id" name="id">
-														<i class="fa fa-trash"></i></button>
-														
-														
-														
 
-												</form> </td>
-												
+												<td><form action="/rentmanager/users" method="post">
+
+
+														<a class="btn btn-primary"
+															href="${pageContext.request.contextPath}/users/details?id=${client.id}">
+															<i class="fa fa-play"></i>
+														</a> <a class="btn btn-success enable"
+															href="${pageContext.request.contextPath}/users/edit?id=${client.id}">
+															<i class="fa fa-edit"></i>
+														</a>
+
+
+
+
+														<button type="submit" class="btn btn-danger enable"
+															value="${client.id}" id="id" name="id">
+															<i class="fa fa-trash"></i>
+														</button>
+
+
+
+
+													</form></td>
+
 											</tr>
 										</c:forEach>
 								</table>
-								
-								
+
+
 							</div>
 							<!-- /.box-body -->
 						</div>

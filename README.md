@@ -9,6 +9,7 @@ Toutes les fonctionnalités du projets sont fonctionnelles :
 - Reservation : Affichage, création, édit et delete sont fonctionnels (je n'ai pas mis de détails pour les réservations car toutes les informations sont déja présentes lors de l'affichage) l'affichages se fait en fonction de l'ID des clients ou des voitures mais pour des raisons de visibilité ce sont les noms qui apparaissent. (La méthode mettant uniquement les ID est disponible dans le servlet en commentaire)
 Pour l'affichage web j'ai fait une autre classe avec un autre constructeur pour montrer la différence mais pour que ce soit plus clair j'aurais surchargé le constructeur.
 
+Toutes les méthodes et requêtes SQL sont aussi fonctionnelles avec aussi des requêtes et méthodes ajoutées.
 
 Les contraintes fonctionnelles sont  : 
 

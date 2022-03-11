@@ -29,3 +29,10 @@ Les contraintes non fonctionnelles sont  :
 - une voiture ne peux pas être réservé 30 jours de suite sans pause
 - un client ayant une adresse mail déjà prise ne peut pas être créé
 - si un client ou un véhicule est supprimé, alors il faut supprimer les réservations associées
+
+
+
+Problèmes rencontrés :
+Les principaux problèmes rencontrés ont étés :
+- La récupération de l'ID pour les edits avec l'URL.
+- Les contraintes sur les réservations que je n'ai d'ailleurs pas réussies.

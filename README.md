@@ -36,3 +36,4 @@ Problèmes rencontrés :
 Les principaux problèmes rencontrés ont étés :
 - La récupération de l'ID pour les edits avec l'URL.
 - Les contraintes sur les réservations que je n'ai d'ailleurs pas réussies.
+- Comme vu en classe le mmodèle des véhicules n'a pas été ajouté sinon je pense qu'il maurait posé des soucis notamment dans les réservations pour l'affichage dans le choix des véhicules.
